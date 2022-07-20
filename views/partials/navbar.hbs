@@ -1,0 +1,50 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Test App</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+      {{#if isLogin}}
+        <li>
+          <h5>
+            Привет
+            {{user.name}}
+          </h5>
+        </li>
+      {{/if}}
+
+      {{#if isRegister}}
+        <li class="active"><a href="/">Регистрация </a></li>
+      {{else}}
+        <li><a href="/">Регистрация </a></li>
+      {{/if}}
+
+      {{#if isLogin}}
+        {{#if isBlog}}
+          <li class="active"><a href="/blog">Блог</a></li>
+        {{else}}
+          <li><a href="/blog">Блог</a></li>
+        {{/if}}
+
+        <li>
+          <form action="/user/logout" method="POST">
+            <button
+              class="aves-effect waves-teal btn-flat white-text"
+            >Выход</button>
+          </form>
+        </li>
+
+      {{else}}
+
+        <li>
+          <form action="/user" method="GET">
+            <button
+              class="active aves-effect waves-teal btn-flat white-text"
+            >Вход</button>
+          </form>
+        </li>
+
+      {{/if}}
+
+    </ul>
+  </div>
+</nav>

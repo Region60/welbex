@@ -1,0 +1,55 @@
+<h2>Блог</h2>
+<form action="/blog/add" method="POST">
+
+  <div class="input-field col s6">
+    <input id="message" name="message" type="text" />
+    <label for="message">message</label>
+  </div>
+  <div class="input-field col s6">
+    <input id="image" name="image" type="text" />
+    <label for="image">Адрес изображения</label>
+  </div>
+  <div class="input-field col s6">
+    <input id="video" name="video" type="text" />
+    <label for="video">Адрес видео</label>
+  </div>
+
+  <button class="btn btn-primary">Опубликовать</button>
+</form>
+
+{{#if posts.length}}
+  {{#each posts}}
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">{{this.authorName}}</span>
+            <p>{{this.message}}</p>
+            {{#if this.image}}
+              <img src="{{this.image}}" alt="" />
+            {{/if}}
+            {{#if this.video}}
+              <video width="320" height="240" controls>
+                <source src="{{this.video}}"/>
+                Your browser does not support the video tag.
+              </video>
+            {{/if}}
+          </div>
+          <div class="card-action">
+            <form action="/blog/delete/{{this.id}}" method="POST">
+              <button class="waves-effect waves-teal btn-flat orange-text">
+                Удалить пост</button>
+            </form>
+
+            <form action="/blog/post/{{this.id}}" method="GET">
+              <button class="waves-effect waves-teal btn-flat orange-text">
+                Редактировать</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <p>Постов пока нет</p>
+{{/if}}

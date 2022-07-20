@@ -1,0 +1,18 @@
+<h2>Редактировать пост</h2>
+<form action="/blog/edit/{{post.id}}" method="POST">
+
+  <div class="input-field col s6">
+    <input id="message" name="message" type="text" value="{{post.message}}"/>
+    <label for="message">Сообщение</label>
+  </div>
+  <div class="input-field col s6">
+    <input id="image" name="image" type="text" value="{{post.image}}" />
+    <label for="image">Ссылка на изображение</label>
+  </div>
+  <div class="input-field col s6">
+    <input id="video" name="video" type="text" value="{{post.video}}"/>
+    <label for="video">Ссылка на видео</label>
+  </div>
+
+  <button class="btn btn-primary">Сохранить</button>
+</form>
